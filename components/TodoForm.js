@@ -11,6 +11,7 @@ export default function TodoForm ({addTask}) {
           placeholder = 'Add a new task ...' 
           style = {styles.task}
           onChangeText = {(val) => setTask(val)}
+          onSubmitEditing ={() => { addTask(task) , setTask('') } }
           value = {`${task}`}  
           />
         <Button 

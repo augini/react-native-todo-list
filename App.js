@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, FlatList, Alert, TouchableWithoutFeedback, Keyb
 import Header from './components/Header';
 import TodoItem from './components/TodoItem';
 import TodoForm from './components/TodoForm';
+import Sandbox from './components/Sandbox';
 
 
 export default function App() {
@@ -20,6 +21,7 @@ export default function App() {
     if (task.length > 3) {
       setTodos([{ text: task, key: Math.random().toString() }, ...todos])
     } else {
+      task.length ===  0 ? Alert.alert('Oops', 'New task should have over 3 chars') :       
       Alert.alert('Oops', `${task} is not long enough.\nNew task shoudl be over 3 chars`, [
         { text: 'Got it', onPress: () => console.log('alert closed') },
         { text: 'Add anyway', onPress: () => console.log('alert closed') },
@@ -28,8 +30,9 @@ export default function App() {
   }
 
   return (
+    // <Sandbox/>
     <TouchableWithoutFeedback 
-       onPress = {() => {Keyboard.dismiss()}} 
+       onPress = {() => { Keyboard.dismiss() }} 
        >
       <View style={styles.container}>
         <Header />
@@ -60,10 +63,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   content: {
+    flex:1,
     padding: 40,
     justifyContent: 'center',
   },
   list: {
+    flex:1,
     marginTop: 20,
   },
 });
